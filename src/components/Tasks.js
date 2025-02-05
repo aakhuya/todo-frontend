@@ -7,12 +7,12 @@ const Tasks = () => {
 
   // Fetch tasks and categories on component mount
   useEffect(() => {
-    fetch('http://localhost:5555/tasks')
+    fetch('https://todo-backend-jveq.onrender.com/tasks')
       .then(response => response.json())
       .then(data => setTasks(data))
       .catch(error => console.error('Error fetching tasks:', error));
 
-    fetch('http://localhost:5555/categories')
+    fetch('https://todo-backend-jveq.onrender.com/categories')
       .then(response => response.json())
       .then(data => setCategories(data))
       .catch(error => console.error('Error fetching categories:', error));
@@ -24,7 +24,7 @@ const Tasks = () => {
       return;
     }
 
-    fetch('http://localhost:5555/tasks', {
+    fetch('https://todo-backend-jveq.onrender.com/tasks', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newTask),
@@ -38,7 +38,7 @@ const Tasks = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5555/tasks/${id}`, { method: 'DELETE' })
+    fetch(`https://todo-backend-jveq.onrender.com/tasks${id}`, { method: 'DELETE' })
       .then(() => setTasks(tasks.filter(task => task.id !== id)))
       .catch(error => console.error('Error deleting task:', error));
   };

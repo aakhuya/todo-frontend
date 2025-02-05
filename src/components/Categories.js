@@ -5,13 +5,13 @@ const Categories = () => {
   const [newCategory, setNewCategory] = useState('');
 
   useEffect(() => {
-    fetch('/api/categories')
+    fetch('https://todo-backend-jveq.onrender.com/categories')
       .then(response => response.json())
       .then(data => setCategories(data));
   }, []);
 
   const handleAddCategory = () => {
-    fetch('/api/categories', {
+    fetch('https://todo-backend-jveq.onrender.com/categories', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ name: newCategory }),
@@ -24,7 +24,7 @@ const Categories = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`/api/categories/${id}`, { method: 'DELETE' })
+    fetch(`https://todo-backend-jveq.onrender.com/categories${id}`, { method: 'DELETE' })
       .then(() => setCategories(categories.filter(category => category.id !== id)));
   };
 

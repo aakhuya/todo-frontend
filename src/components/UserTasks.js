@@ -8,17 +8,17 @@ const UserTasks = () => {
 
   // Fetch user tasks, users, and tasks
   useEffect(() => {
-    fetch("http://localhost:5555/usertasks")
+    fetch("https://todo-backend-jveq.onrender.com/usertasks")
       .then((response) => response.json())
       .then((data) => setUserTasks(data))
       .catch((error) => console.error("Error fetching user tasks:", error));
 
-    fetch("http://localhost:5555/users")
+    fetch("https://todo-backend-jveq.onrender.com/users")
       .then((response) => response.json())
       .then((data) => setUsers(data))
       .catch((error) => console.error("Error fetching users:", error));
 
-    fetch("http://localhost:5555/tasks")
+    fetch("https://todo-backend-jveq.onrender.com/tasks")
       .then((response) => response.json())
       .then((data) => setTasks(data))
       .catch((error) => console.error("Error fetching tasks:", error));
@@ -31,7 +31,7 @@ const UserTasks = () => {
       return;
     }
 
-    fetch("http://localhost:5555/usertasks", {
+    fetch("https://todo-backend-jveq.onrender.com/userstasks", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUserTask),
@@ -51,7 +51,7 @@ const UserTasks = () => {
 
   // Function to delete a user-task assignment
   const handleDelete = (id) => {
-    fetch(`http://localhost:5555/usertasks/${id}`, { method: "DELETE" })
+    fetch(`https://todo-backend-jveq.onrender.com/usertasks${id}`, { method: "DELETE" })
       .then(() => setUserTasks(userTasks.filter((ut) => ut.id !== id)))
       .catch((error) => console.error("Error deleting user task:", error));
   };

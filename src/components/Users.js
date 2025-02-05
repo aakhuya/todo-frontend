@@ -3,16 +3,15 @@ import React, { useState, useEffect } from 'react';
 const Users = () => {
   const [users, setUsers] = useState([]);
   const [newUser, setNewUser] = useState({ username: '', email: '' });
-  const [editingUser, setEditingUser] = useState(null);
 
   useEffect(() => {
-    fetch('/api/users')
+    fetch('https://todo-backend-jveq.onrender.com/users')
       .then(response => response.json())
       .then(data => setUsers(data));
   }, []);
 
   const handleAddUser = () => {
-    fetch('/api/users', {
+    fetch('https://todo-backend-jveq.onrender.com/users', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newUser),
@@ -25,7 +24,7 @@ const Users = () => {
   };
 
   const handleDelete = (id) => {
-    fetch(`/api/users/${id}`, { method: 'DELETE' })
+    fetch(`https://todo-backend-jveq.onrender.com/users${id}`, { method: 'DELETE' })
       .then(() => setUsers(users.filter(user => user.id !== id)));
   };
 
